@@ -18,7 +18,6 @@ A platform built with **PHP**, **MySQL**, and **vanilla JavaScript**. PetMate st
 - Registered pet sitters
 - Pet owners
 - Veterinary clinic staff
-- Pet owners
 
 ---
 
