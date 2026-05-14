@@ -1,6 +1,24 @@
-# 🐾 PetMate — Veterinary Clinic Management System
+# 🐾 PetMate 
 
-A full-featured, role-based veterinary clinic management platform built with **PHP**, **MySQL**, and **vanilla JavaScript**. PetMate streamlines the entire clinical workflow — from pet registration and visit requests through assessment, treatment, monitoring, discharge, and billing — across multiple staff roles and a pet-owner self-service portal.
+A platform built with **PHP**, **MySQL**, and **vanilla JavaScript**. PetMate streamlines the entire clinical workflow — from pet registration and visit requests through assessment, treatment, monitoring, discharge, and billing — across multiple staff roles and a pet-owner self-service portal, connect pet owners with trusted pet sitters while providing an organized platform for managing pet profiles, bookings, schedules, and pet care services.
+
+
+# Problem Statement
+-Insufficient number of structured pet-care training workshops available for aspiring pet sitters.
+-Inconsistent regulatory standards for professional pet-sitting services.
+-Inconsistent quality of customer experiences.
+
+# Objectives
+- General Objective: Conducted structured pet-care workshops for aspiring pet sitters at least twice a month. 
+- Specific Objective 1: Consistent regulatory standards for professional pet-sitting services achieving at least 90% compliance across registered providers
+- Specific Objective 2: Consistent high-quality customer experiences achieving at least 90% positive satisfaction ratings
+
+# Target Users
+- Aspiring pet sitters
+- Registered pet sitters
+- Pet owners
+- Veterinary clinic staff
+- Pet owners
 
 ---
 
@@ -165,134 +183,6 @@ Receipt generated & printable ✅
 
 ---
 
-## 📂 Project Structure
-
-```
-Petmate/
-├── index.php                    # Landing page (redirects if logged in)
-├── login.php                    # Email/password login
-├── register.php                 # User registration with OTP
-├── verify_otp.php               # OTP email verification
-├── google_auth.php              # Google OAuth 2.0 flow + role selection
-├── change_password.php          # Password change utility
-├── logout.php                   # Session destroy & redirect
-├── composer.json                # PHP dependencies
-├── .env                         # Mail configuration (not committed)
-│
-├── assets/
-│   ├── css/
-│   │   └── style.css            # Global design system & styles
-│   └── js/
-│       └── main.js              # Shared frontend utilities
-│
-├── includes/                    # Core backend modules
-│   ├── auth.php                 # Session management & role redirects
-│   ├── rbac.php                 # Role-based access control
-│   ├── db.php                   # PDO database connection
-│   ├── encrypt.php              # AES-256-CBC encryption/decryption
-│   ├── dlp.php                  # Data Loss Prevention (session timeout, copy/print block)
-│   ├── session_guard.php        # Active session tracking (single-session enforcement)
-│   ├── logger.php               # Audit log & login attempt logger
-│   ├── mailer.php               # PHPMailer configuration
-│   ├── header.php               # Shared HTML header/navigation
-│   ├── footer.php               # Shared HTML footer
-│   ├── monitoring_logs_schema.php   # Monitoring log field definitions
-│   └── treatment_workflow_schema.php # Treatment workflow state machine
-│
-├── database/                    # SQL schema & migrations
-│   ├── schema.sql               # Core database schema (all tables)
-│   ├── security_schema.sql      # Audit logs, login attempts, active sessions
-│   ├── add_assessment_flow.sql  # Assessment sessions & rooms
-│   ├── add_exam_rooms.sql       # Examination room tables
-│   ├── add_is_verified.sql      # Email verification flag
-│   ├── align_workflow_enums.sql # Workflow status enum alignment
-│   ├── update_otp_schema.sql    # OTP table updates
-│   ├── update_schema.sql        # Schema patches
-│   ├── update_schema2.sql       # Additional schema patches
-│   └── migrations/
-│       ├── treatment_workflow_hospital.sql
-│       └── vet_assistant_treatment_execution.sql
-│
-├── dashboards/
-│   ├── admin/
-│   │   └── index.php            # Admin dashboard
-│   │
-│   ├── csr/                     # Client Service Representative
-│   │   ├── index.php            # CSR dashboard home
-│   │   ├── billing.php          # Billing overview
-│   │   ├── compute_bill.php     # Itemized bill computation
-│   │   ├── print_receipt.php    # Receipt printing
-│   │   ├── pet_info.php         # Pet information lookup
-│   │   ├── pet_records.php      # Pet record management
-│   │   ├── review_record.php    # Visit record review
-│   │   ├── visit_summaries.php  # Visit summary management
-│   │   ├── messages.php         # Messaging interface
-│   │   └── settings.php         # CSR settings
-│   │
-│   ├── vet_technician/          # Veterinary Technician
-│   │   ├── index.php            # Vet tech dashboard home
-│   │   ├── exam_rooms.php       # Exam room management
-│   │   ├── exam_room.php        # Individual room view
-│   │   ├── assessments.php      # Assessment list
-│   │   ├── assessment_form.php  # Assessment data entry
-│   │   ├── assessment_queue.php # Pending assessment queue
-│   │   ├── assessment_summary.php # Assessment results summary
-│   │   ├── pet_overview.php     # Patient overview
-│   │   ├── treatment_plan.php   # Treatment plan creation
-│   │   ├── treatment_details.php # Treatment plan details
-│   │   ├── view_treatment.php   # Treatment viewer
-│   │   ├── record_results.php   # Lab result recording
-│   │   ├── approve_discharge.php # Discharge approval
-│   │   ├── view_monitoring.php  # Monitoring log viewer
-│   │   ├── schedule_assignment.php # Staff schedule assignment
-│   │   ├── acknowledge_room.php # Room readiness acknowledgment
-│   │   ├── prescriptions.php    # Prescription management
-│   │   └── settings.php         # Vet tech settings
-│   │
-│   ├── vet_assistant/           # Veterinary Assistant
-│   │   ├── index.php            # Vet assistant dashboard home
-│   │   ├── prepare_room.php     # Room preparation checklist
-│   │   ├── room_status.php      # Room status overview
-│   │   ├── administer.php       # Treatment administration
-│   │   ├── monitor_patient.php  # Patient monitoring & observation logs
-│   │   ├── monitoring_queue.php # Monitoring queue
-│   │   ├── discharge.php        # Discharge workflow
-│   │   ├── discharge_prep.php   # Discharge summary preparation
-│   │   ├── instructions.php     # Post-care instructions
-│   │   └── settings.php         # Vet assistant settings
-│   │
-│   ├── pet_owner/               # Pet Owner
-│   │   ├── index.php            # Pet owner dashboard home
-│   │   ├── register_pet.php     # Pet registration form
-│   │   ├── my_pets.php          # My pets list
-│   │   ├── submit_visit.php     # New visit request submission
-│   │   ├── visit_records.php    # Visit history
-│   │   ├── treatment_plans.php  # Treatment plans list
-│   │   ├── view_treatment.php   # Treatment plan detail & consent
-│   │   ├── bills.php            # Billing overview
-│   │   ├── pay.php              # PayMongo checkout redirect
-│   │   ├── payment_success.php  # Post-payment confirmation
-│   │   ├── receipt.php          # Printable receipt
-│   │   ├── book_sitter.php      # Pet sitter booking
-│   │   ├── my_bookings.php      # Booking management
-│   │   ├── messages.php         # Messaging
-│   │   ├── mark_read.php        # Mark notifications as read
-│   │   └── settings.php         # Pet owner settings
-│   │
-│   ├── vet/
-│   │   └── index.php            # Veterinarian dashboard (legacy)
-│   │
-│   ├── admin.php                # Admin dashboard wrapper
-│   ├── csr.php                  # CSR dashboard wrapper
-│   ├── pet_owner.php            # Pet owner dashboard wrapper
-│   ├── vet_technician.php       # Vet tech dashboard wrapper
-│   ├── register_pet.php         # Shared pet registration
-│   └── review_record.php        # Shared record review
-│
-└── vendor/                      # Composer dependencies (auto-generated)
-```
-
----
 
 ## 📋 Prerequisites
 
@@ -312,7 +202,7 @@ Petmate/
 
 ```bash
 cd C:\xampp\htdocs
-git clone <repository-url> Petmate
+git clone https://github.com/abigailcomedidoarchi-ship-it/Petmate.git Petmate
 ```
 
 Or download and extract the project into `C:\xampp\htdocs\Petmate\`.
