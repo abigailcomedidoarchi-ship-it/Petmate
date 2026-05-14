@@ -4,9 +4,9 @@ A platform built with **PHP**, **MySQL**, and **vanilla JavaScript**. PetMate st
 
 
 # Problem Statement
--Insufficient number of structured pet-care training workshops available for aspiring pet sitters.
--Inconsistent regulatory standards for professional pet-sitting services.
--Inconsistent quality of customer experiences.
+- Insufficient number of structured pet-care training workshops available for aspiring pet sitters.
+- Inconsistent regulatory standards for professional pet-sitting services.
+- Inconsistent quality of customer experiences.
 
 # Objectives
 - General Objective: Conducted structured pet-care workshops for aspiring pet sitters at least twice a month. 
